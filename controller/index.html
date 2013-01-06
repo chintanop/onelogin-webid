@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>WebID Simple Sign On Configurator</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+</script>
+<script src="valid.js"> </script> 
+
+<style>
+
+body {
+  min-height: 100%;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0)));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); 
+  padding-top:40px;
+}
+
+html{
+background:#C5C8CB url('http://subtlepatterns.subtlepatterns.netdna-cdn.com/wp-content/themes/tweaker6/images/bgnoise.png') !important;
+height:100%;
+}
+
+.container{
+ background-color:#fff;
+ box-shadow: 3px 3px 3px #999;
+ -moz-box-shadow: 3px 3px 3px #999;
+ -webkit-box-shadow: 3px 3px 3px #999;
+ padding: 0;
+ border: 1px solid #E8E8E8;
+ -webkit-border-radius: 5px;
+ border-radius: 5px;
+ -moz-radius: 5px;
+ -webkit-radius: 5px;
+ padding:40px;
+ min-height: 600px;
+ width:860px;
+ margin-bottom:30px;
+}
+
+p {margin-left:20px;}
+
+
+.g-33{
+	width: 33.33%;
+	float: left;
+	margin: 0;
+}
+.g-20{
+	width: 20.33%;
+	float: left;
+	margin: 0;
+}
+.grid{
+	overflow: hidden;
+	clear: both;
+}
+
+.systemselect .controls {
+	margin-left:40px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+
+<div class="container">
+
+	<div class="page-header">
+		<h1>Single Sign-On Configuator
+			<small>create and manage WebID based users across systems</small>
+		</h1>
+	</div>
+	
+	<form name="input" action="controller.php" method="get" onsubmit="return validateFormOnSubmit(this)" class="form-horizontal" >
+	
+			<!-- label>User ID:</label> <input type="text" name="fname" id="fname" onfocus="setStyle(this.id)"><br -->
+
+			<!--<label>Last name:</label> <input type="text" name="lname"><br>
+			<div>
+				<label>Password:</label><input type="password" name="pwd" id ="pwd" onfocus="setStyle(this.id)">
+			</div>-->
+			<!-- label>Email:</label> <input type="text" name="email" id="email" onfocus="setStyle(this.id)" -->
+
+			<!--<label>Do you have Webid?</label>
+
+
+<div class ="g-20">
+<input type="radio" name="rwebid" value="Yes"><label>Yes</label>
+</div>
+<div class="g-20">
+<input type="radio" name="rwebid" id ="radno" value="NO"><label>No</label>
+</div>
+-->
+			<div class="control-group">
+				 <label class="control-label">Name</label> 
+				<div class="controls">
+					<input type="text" name="fname" id="fname">
+				</div>
+			</div>
+
+			<div class="control-group">
+				 <label class="control-label">Email</label> 
+				<div class="controls">
+					<input type="text" name="email" id="email">
+				</div>
+			</div>
+
+			<div class="control-group">
+				 <label class="control-label">Enter WebID</label> 
+				<div class="controls">
+					<input type="text" name="webid" id="wbstr" onfocus="setStyle(this.id)">
+						<a href="https://sw.appliedinformaticsinc.com:4430/ods/index.html" target="_blank">Create a New WebID</a>
+					<span class="help-block">(Note:This WebID will be used for authenticating all sites below)</span>
+				</div>
+			</div>
+<!-- <input type="submit" class="btnbtn btn-success btn-large" value="Create Webid">-->
+
+			<div class="control-group">
+				<label>Choose the tools for making user and use the above webid to login to them </label>
+			</div>
+
+			<div class="control-group systemselect">
+				<div class="controls">
+				  <span class="row">
+				     <span class="span1">
+					<label class="checkbox"> 
+						<input type="checkbox" name="drupal" value="1">
+						Drupal
+					</label>
+				      </span>
+				      <span class="span2">	
+					<select name="drupal_role" class="span2">	
+						  <option value="">Select User Role</option>
+				  		  <option value="1">Administrator</option>
+						  <option value="2">Authenticated</option>
+						  <option value="3">Editor</option>
+						  <option value="4">Viewer</option>
+					</select>
+				     </span>	
+				     <span class="span2">
+					<a href="#">Manage Users</a>
+				     </span>
+				  </span>
+				</div>
+			</div>
+
+			<div class="control-group systemselect">
+				<div class="controls">
+				  <span class="row">
+				     <span class="span1">
+					<label class="checkbox"> 
+						<input type="checkbox" name="virt" value="2">
+						Virtuoso 
+					</label>
+				      </span>
+				      <span class="span2">	
+					<select name="virt_role" class="span2">	
+						  <option value="">Select a User Role</option>
+				  		  <option value="administrators">administrators</option>
+						  <option value="SPARQL_SELECT">SPARQL_SELECT</option>
+						  <option value="SPARQL_SPONGE">SPARQL_SPONGE</option>
+						  <option value="SPARQL_UPDATE">SPARQL_UPDATE</option>
+					</select>
+				     </span>	
+				  </span>
+				</div>
+			</div>
+
+			<div class="control-group systemselect">
+				<div class="controls">
+				  <span class="row">
+				     <span class="span1">
+					<label class="checkbox"> 
+						<input type="checkbox" name="onto" value="3">OntoWiki
+					</label>
+				      </span>
+				      <span class="span2">	
+					<select name="ontowiki_role" class="span2">	
+						  <option value="">Select a User Role</option>
+				  		  <option value="1">Administrator</option>
+						  <option value="2">Authenticated User</option>
+						  <option value="3">Editor</option>
+						  <option value="4">Viewer</option>
+					</select>
+				     </span>	
+				  </span>
+				</div>
+			</div>
+
+			<div class="control-group systemselect">
+				<div class="controls">
+				  <span class="row">
+				     <span class="span1">
+					<label class="checkbox"> 
+						<input type="checkbox" name="solr" value="4">Tomcat/Solr
+					</label>
+				      </span>
+				      <span class="span2">	
+					<select name="tomcat_role" class="span2">	
+						  <option value="">Select a User Role</option>
+				  		  <option value="1">Core 1 Access</option>
+						  <option value="2">Core 2 Access</option>
+					</select>
+				     </span>	
+				  </span>
+				</div>
+			</div>
+
+
+			<!-- div class="control-group systemselect">
+				<div class="controls">
+				  <span class="row">
+				     <span class="span1">
+					<label class="checkbox"> 
+	<input type="checkbox" name="ckan" value="5">CKAN
+					</label>
+				      </span>
+				      <span class="span2">	
+					<select name="role" class="span2">	
+						  <option value="">Select a User Role</option>
+				  		  <option value="1">Administrator</option>
+						  <option value="2">Authenticated User</option>
+						  <option value="3">Editor</option>
+						  <option value="4">Viewer</option>
+					</select>
+				     </span>	
+				  </span>
+				</div>
+			</div -->
+
+			<div class="form-actions">
+				<input type="submit"  class="btn btn-success btn-large" value="Create Users" id="submit">
+			</div>
+		</form>
+</div>
+
+</body>
+
+</html>
