@@ -10,7 +10,7 @@ class VirtuosoSysCreateUserWebID {
 		$filename = '/tmp/create_account.sql';
 
 		$command = "USER_CREATE('%s','%s',vector('E-MAIL','%s'));\n";
-		$command= sprintf($command, $fname, $email ,$email]);
+		$command= sprintf($command, $fname, $email ,$email);
 		//echo $command;$_REQUEST["pwd"]
 
 		$commands="insert into SYS_USER_WEBID (UW_U_NAME, UW_WEBID) values ('%s', '%s');\n";
@@ -62,7 +62,7 @@ class VirtuosoSysCreateUserWebID {
 		</pre>
 		<hr />Last line of the output: ' . $last_line . '
 		<hr />Return value: ' . $retval;
-		echo "done"
+		echo "done";
 		
 	}
 

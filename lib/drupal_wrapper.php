@@ -3,16 +3,18 @@
 class DrupalSysCreateUserWebID {
 
 	function create_user($webid, $settings){
+		//echo "FUNC".$settings["DRUPAL_ROOT"];
 		$drupal_root = $settings["DRUPAL_ROOT"];
 		$fname 	    = $settings["fname"]; //TODO: pull this from foaf
 		$email 	    = $settings["email"];
 		$role       = $settings["role"];
 		define('DRUPAL_ROOT', $drupal_root);
+		
 
 		//Load Drupal
-		require_once './includes/bootstrap.inc';
+		require_once $drupal_root.'/includes/bootstrap.inc';
 		drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
-		echo 'loaded';
+		//echo 'loaded';
                 $account = new StdClass();
                 $account->is_new = TRUE;
                 $account->status = TRUE;
@@ -24,7 +26,7 @@ class DrupalSysCreateUserWebID {
 
 		$account->roles[1] = $role;
 
-   		echo 'try';
+   		//echo 'try';
                 try
                 {
 
@@ -41,11 +43,12 @@ class DrupalSysCreateUserWebID {
                     user_set_authmaps($account, array('authname_webidauth' => $account->name));
 
                         debug("saved");
-                        echo 'DRUPAL done';
+                        echo 'DRUPAL ACCOUNT CREATED...<hr />';
                 }
                 catch (Exception $e)
                 {
                     echo "\n",'Caught exception: ',  $e->getMessage(), "\n";
+		    echo "<hr />";	
                 }
 
 	}
