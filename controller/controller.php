@@ -14,7 +14,7 @@ $virt_role 	= $_REQUEST["virt_role"];
 $ontowiki_role 	= $_REQUEST["ontowiki_role"];
 $tomcat_role 	= $_REQUEST["tomcat_role"];
 
-	 
+
 //for Drupal
 if ($_REQUEST["drupal"]==1){
 	//echo "Creating Drupal Account";
@@ -40,7 +40,8 @@ if ($_REQUEST["drupal"]==1){
 //for Virtuoso
 if ($_REQUEST["virt"]==2){
 	$settings["VIRTUOSO_BIN"] = $VIRTUOSO_BIN;
-	$settings["role"] = $virtuoso_role;
+
+	$settings["role"] = $virt_role;
 	if($VIRTUOSO_LOCAL){
 		$dys = new VirtuosoSysCreateUserWebID();
 		$dys->create_user($webid, $settings);		
@@ -61,7 +62,8 @@ if ($_REQUEST["virt"]==2){
 //Ontowiki
 //for Ontowiki
 if ($_REQUEST["onto"]==3){
-        $settings["ONTOWIKI_ROOT"] = $ONTOWIKI_ROOT;
+        echo "onto";
+	$settings["ONTOWIKI_ROOT"] = $ONTOWIKI_ROOT;
         $settings["role"] = $ontowiki_role;
         if($ONTOWIKI_LOCAL){
                 $dys = new OntowikiSysCreateUserWebID();
@@ -83,7 +85,8 @@ if ($_REQUEST["onto"]==3){
 //for Tomcat
 if ($_REQUEST["tomcat"]==4)
 	{
-        	$settings["TOMCAT_ROOT"] = $TOMCAT_ROOT;
+        	 echo "tomcat";
+		 $settings["TOMCAT_ROOT"] = $TOMCAT_ROOT;
        		 $settings["role"] = $tomcat_role;
        		 if($TOMCAT_LOCAL)
 		  {
