@@ -8,7 +8,7 @@ class VirtuosoSysCreateUserWebID {
 		$email 	    = $settings["email"];
 		$role       = $settings["role"];
 		$filename = '/tmp/create_account.sql';
-
+		
 		$command = "USER_CREATE('%s','%s',vector('E-MAIL','%s'));\n";
 		$command= sprintf($command, $fname, $email ,$email);
 		//echo $command;$_REQUEST["pwd"]
@@ -40,7 +40,7 @@ class VirtuosoSysCreateUserWebID {
 
 
 		    fclose($handle);
-		    echo "Success file created";
+		    //echo "Success file created";
 		}
 		catch (Exception $ex)
 			{
@@ -49,8 +49,8 @@ class VirtuosoSysCreateUserWebID {
 
 
 		echo '<pre>';
-
-		$command=$virtuoso_bin.'isql-vt 1111 dba dba < //tmp/create_account.sql;';
+		
+		$command=$virtuoso_bin.'/isql-vt 1111 dba root < /tmp/create_account.sql;'; //dba was previous
 		try {
 			$last_line = system($command, $retval);
 		}
@@ -58,11 +58,12 @@ class VirtuosoSysCreateUserWebID {
 		    echo $ex;
 		}
 		// Printing additional info
-		echo '
-		</pre>
-		<hr />Last line of the output: ' . $last_line . '
-		<hr />Return value: ' . $retval;
-		echo "done";
+		
+		//echo '
+		//</pre>
+		//<hr />Last line of the output: ' . $last_line . '
+		//	<hr />Return value: ' . $retval;
+		//echo $retval.'<hr />';
 		
 	}
 
