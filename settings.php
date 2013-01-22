@@ -12,11 +12,11 @@ $DRUPAL_ROOT  = "/var/www/drupal"; //Set this variable if running on local or ad
 //$DRUPAL_REMOTE_CONTROLLER_URL = "http://remote-site/secure/drupal_wrapper.php?remote=1";
 
 $VIRTUOSO_LOCAL = true;
-$VIRTUOSO_BIN   = "/usr/share/virutoso/bin"; //path to where isql-vt is located
+$VIRTUOSO_BIN   = "/usr/bin"; //share/virutoso/bin"; //path to where isql-vt is located
 //$VIRTUOSO_REMOTE_CONTROLLER_URL = "http://remote-site/secure/virtuoso_wrapper.php?remote=1";
 
 $ONTOWIKI_LOCAL = true;
-$ONTOWIKI_ROOT  = "/var/www/ontowiki";//path to where ontowiki is located
+$ONTOWIKI_ROOT  = "/usr/share/ontowiki";//path to where ontowiki is located
 //$ONTOWIKI_REMOTE_CONTROLLER_URL = "http://remote-site/secure/ontowiki_wrapper.php?remote=1";
 
 $TOMCAT_LOCAL = true;
